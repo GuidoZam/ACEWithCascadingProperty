@@ -24,15 +24,15 @@ export class AceWithCascadingPropertyPropertyPane {
                   multiline: true
                 }),
                 PropertyPaneDropdown("parent", {
-                  label: "Parent",
+                  label: strings.ParentFieldLabel,
                   options: this.parents
                 }),
                 PropertyPaneDropdown("child", {
-                  label: "Child",
+                  label: strings.ChildFieldLabel,
                   options: children
                 }),
                 PropertyPaneToggle("enableAsync",{
-                  label: "EnableAsync"
+                  label: strings.EnableAsyncFieldLabel
                 })
               ]
             }

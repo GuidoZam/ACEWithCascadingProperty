@@ -4,6 +4,9 @@ declare interface IAceWithCascadingPropertyAdaptiveCardExtensionStrings {
   DescriptionFieldLabel: string;
   TitleFieldLabel: string;
   IconPropertyFieldLabel: string;
+  ParentFieldLabel: string;
+  ChildFieldLabel: string;
+  EnableAsyncFieldLabel: string;
   Title: string;
   SubTitle: string;
   Description: string;
