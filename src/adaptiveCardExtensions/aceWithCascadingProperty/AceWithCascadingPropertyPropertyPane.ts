@@ -1,4 +1,4 @@
-import { IPropertyPaneConfiguration, IPropertyPaneDropdownOption, PropertyPaneDropdown, PropertyPaneTextField } from '@microsoft/sp-property-pane';
+import { IPropertyPaneConfiguration, IPropertyPaneDropdownOption, PropertyPaneDropdown, PropertyPaneTextField, PropertyPaneToggle } from '@microsoft/sp-property-pane';
 import * as strings from 'AceWithCascadingPropertyAdaptiveCardExtensionStrings';
 
 export class AceWithCascadingPropertyPropertyPane {
@@ -30,6 +30,9 @@ export class AceWithCascadingPropertyPropertyPane {
                 PropertyPaneDropdown("child", {
                   label: "Child",
                   options: children
+                }),
+                PropertyPaneToggle("enableAsync",{
+                  label: "EnableAsync"
                 })
               ]
             }

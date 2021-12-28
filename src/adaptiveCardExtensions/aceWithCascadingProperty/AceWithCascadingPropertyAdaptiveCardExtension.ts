@@ -11,6 +11,7 @@ export interface IAceWithCascadingPropertyAdaptiveCardExtensionProps {
   parent: string;
   child: string;
   children: IPropertyPaneDropdownOption[];
+  enableAsync: boolean;
 }
 
 export interface IAceWithCascadingPropertyAdaptiveCardExtensionState {
@@ -66,7 +67,10 @@ export default class AceWithCascadingPropertyAdaptiveCardExtension extends BaseA
   }
 
   protected setAsync = async (childValues: IPropertyPaneDropdownOption[]): Promise<IPropertyPaneDropdownOption[]> => {
-    //await this.delay(50);
+    console.log(this.properties.enableAsync);
+    if(this.properties.enableAsync === true) {
+      await this.delay(50);
+    }
     return childValues;
   }
 
