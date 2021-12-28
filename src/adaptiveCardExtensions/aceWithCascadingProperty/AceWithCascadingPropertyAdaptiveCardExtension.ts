@@ -1,4 +1,4 @@
-import { IPropertyPaneConfiguration } from '@microsoft/sp-property-pane';
+import { IPropertyPaneConfiguration, IPropertyPaneDropdownOption } from '@microsoft/sp-property-pane';
 import { BaseAdaptiveCardExtension } from '@microsoft/sp-adaptive-card-extension-base';
 import { CardView } from './cardView/CardView';
 import { QuickView } from './quickView/QuickView';
@@ -8,6 +8,9 @@ export interface IAceWithCascadingPropertyAdaptiveCardExtensionProps {
   title: string;
   description: string;
   iconProperty: string;
+  parent: string;
+  child: string;
+  children: IPropertyPaneDropdownOption[];
 }
 
 export interface IAceWithCascadingPropertyAdaptiveCardExtensionState {
@@ -59,6 +62,34 @@ export default class AceWithCascadingPropertyAdaptiveCardExtension extends BaseA
   }
 
   protected getPropertyPaneConfiguration(): IPropertyPaneConfiguration {
-    return this._deferredPropertyPane!.getPropertyPaneConfiguration();
+    return this._deferredPropertyPane!.getPropertyPaneConfiguration(this.properties.children);
+  }
+
+  protected setAsync = async (childValues: IPropertyPaneDropdownOption[]): Promise<IPropertyPaneDropdownOption[]> => {
+    //await this.delay(50);
+    return childValues;
+  }
+
+  protected delay(milliseconds: number) {
+    return new Promise( resolve => setTimeout(resolve, milliseconds) );
+  }
+
+  protected onPropertyPaneFieldChanged = async (propertyPath: string, oldValue: any, newValue: any): Promise<void> => {
+    if(propertyPath === "parent") {
+      this.properties.child = undefined;
+      const children = [...new Array(5)].map((value, index) => {const v = newValue + index; return { key: v, text: v };});
+      switch(newValue) {
+        case "A":
+          this.properties.children = await this.setAsync(children);
+        break;
+        case "B":
+          this.properties.children = await this.setAsync(children);
+        break;
+        case "C":
+          this.properties.children = await this.setAsync(children);
+        break;
+      }
+      console.log(this.properties.children);
+    }
   }
 }
