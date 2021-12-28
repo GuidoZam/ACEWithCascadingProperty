@@ -1,0 +1,18 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "ace-with-cascading-property-adaptive-card-extension": {
+      "components": [
+        {
+          "entrypoint": "./lib/adaptiveCardExtensions/aceWithCascadingProperty/AceWithCascadingPropertyAdaptiveCardExtension.js",
+          "manifest": "./src/adaptiveCardExtensions/aceWithCascadingProperty/AceWithCascadingPropertyAdaptiveCardExtension.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "AceWithCascadingPropertyAdaptiveCardExtensionStrings": "lib/adaptiveCardExtensions/aceWithCascadingProperty/loc/{locale}.js"
+  }
+}
